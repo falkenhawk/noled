@@ -1,7 +1,8 @@
 # noled
 
-noled is a simple plugin to turn off PS Vita status LEDs. Especially useful at night. With the
-release of v1.2, it disables both the Home Button LED and Game Cartridge LED.
+noled is a simple plugin to turn off PS Vita status LEDs. Especially useful at night. It
+disables the Home Button LED and Game Cartridge LED, and since v2.0 also the Vita 2000
+power LED.
 
 > [!IMPORTANT]
 > ## NEW: the Vita 2000 power LED can finally be turned off
