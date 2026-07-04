@@ -1,0 +1,44 @@
+#include <assert.h>
+
+#include "../syscon_experiment_policy.h"
+
+int main(void)
+{
+	assert(!noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_PASS));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_FORCE_0387_FF_01_SAFE));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_FORCE_0387_FF_00_10));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_FORCE_0387_FF_BOTH));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_DOLCE_OFF_0387_BOTH));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_SYSCON_LED_TRACE_ONLY));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_SYSCON_COMMAND_HOOKS_PASS));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_DOLCE_LED_TRACE_PASS));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_GPIO_TRACE_PASS));
+	assert(!noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_GPIO_PORT3_BLOCK));
+	assert(!noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_GPIO_READ_SAMPLER));
+	assert(noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_SYSCON_CALLER_MAP_TRACE));
+	assert(!noled_syscon_experiment_enabled(NOLED_LED_CANDIDATE_RUNTIME_LED_PROBE));
+
+	assert(!noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_PASS));
+	assert(!noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_GPIO_PORT3_BLOCK));
+	assert(!noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_GPIO_READ_SAMPLER));
+	assert(!noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_SYSCON_LED_TRACE_ONLY));
+	assert(noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_SYSCON_COMMAND_HOOKS_PASS));
+	assert(noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_DOLCE_LED_TRACE_PASS));
+	assert(noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_GPIO_TRACE_PASS));
+	assert(noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_FORCE_0387_FF_01_SAFE));
+	assert(noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_SYSCON_CALLER_MAP_TRACE));
+	assert(!noled_syscon_command_hooks_enabled(NOLED_LED_CANDIDATE_RUNTIME_LED_PROBE));
+
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_PASS));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_SYSCON_LED_TRACE_ONLY));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_SYSCON_COMMAND_HOOKS_PASS));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_GPIO_TRACE_PASS));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_GPIO_PORT3_BLOCK));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_GPIO_READ_SAMPLER));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_SYSCON_CALLER_MAP_TRACE));
+	assert(noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_DOLCE_OFF_0387_BOTH));
+	assert(noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_DOLCE_LED_TRACE_PASS));
+	assert(!noled_syscon_dolce_hook_enabled(NOLED_LED_CANDIDATE_RUNTIME_LED_PROBE));
+
+	return 0;
+}
