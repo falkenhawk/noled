@@ -25,8 +25,9 @@ controlled this LED (upstream request open since 2018).
 
 The original noled plugin (xerpi/rereprep) disables the PS button LED and game card LED
 by clearing SoC GPIO bus 0 ports 7 and 6 and hooking `ksceGpioPortSet` so the OS cannot
-re-enable them. This works on all models but does not affect the PCH-2000 power LED;
-the gap was reported in 2018 (rereprep/noled issue #3) and never solved. A commenter on
+re-enable them. This works on all models but does not affect the PCH-2000 power LED; the
+gap was reported in 2018 ([rereprep/noled#3](https://github.com/rereprep/noled/issues/3))
+and never solved. A commenter on
 that issue swept the GPIO space exhaustively and only managed to turn off the backlight,
 which is consistent with the known GPIO map (vitasdk `psp2kern/lowio/gpio.h` defines only
 `LED_GAMECARD` = port 6 and `LED_PS_BUTTON` = port 7; SKGleba's baremetal projects use
@@ -202,11 +203,25 @@ Nothing persists across a reboot; removing the plugin restores fully stock behav
 
 ## 9. Sources
 
-- live hardware probing on PCH-2000 (this repo: probe harness, `docs/` session logs)
-- wiki.henkaku.xyz: Ernie, SceSyscon, ScePower pages (packet format, command table,
-  NIDs, `sceLedSetMode` documentation)
-- decompiled 3.60 SceSyscon: emu-russia/VitaTestSuite `Syscon/SysconElf_360.cpp`
-  (wrapper payload construction for every command above)
-- Brendonm17/ModernBT-Vita (`ksceSysconCtrlLED(0, x)` = retail charge LED)
-- vitasdk headers and NID database; SKGleba baremetal projects (GPIO LED map)
-- rereprep/noled (the original GPIO mechanism this fork extends)
+- live hardware probing on PCH-2000 (this repo: probe harness in `loader/` and
+  `runtime_probe.h`, session-by-session results in the other `docs/` files)
+- Vita Development Wiki: [Ernie](https://wiki.henkaku.xyz/vita/Ernie) (packet format,
+  checksum), [SceSyscon](https://wiki.henkaku.xyz/vita/SceSyscon) (command table, NIDs,
+  wrapper prototypes), [ScePower](https://wiki.henkaku.xyz/vita/ScePower)
+  (`sceLedSetModeForDriver`, `SceLedConfiguration`)
+- decompiled 3.60 SceSyscon module:
+  [emu-russia/VitaTestSuite `Syscon/SysconElf_360.cpp`](https://github.com/emu-russia/VitaTestSuite/blob/master/Syscon/SysconElf_360.cpp)
+  (payload construction of every wrapper referenced above)
+- [Brendonm17/ModernBT-Vita `src/notify.c`](https://github.com/Brendonm17/ModernBT-Vita/blob/main/src/notify.c)
+  (`ksceSysconCtrlLED(0, x)` documented as the retail Vita 1000/2000 charge LED)
+- [SonicMastr/libraries `include/kernel/syscon.h`](https://github.com/SonicMastr/libraries/blob/master/include/kernel/syscon.h)
+  (independent documentation of the DolceLED states and CtrlLED on/off contract)
+- [vitasdk/vita-headers](https://github.com/vitasdk/vita-headers) (kernel headers and the
+  NID database, incl.
+  [`psp2kern/lowio/gpio.h`](https://github.com/vitasdk/vita-headers/blob/master/include/psp2kern/lowio/gpio.h)
+  with the only two LED GPIO ports);
+  [SKGleba/psp2ref `hardware/gpio.h`](https://github.com/SKGleba/psp2ref/blob/master/hardware/gpio.h)
+  and SKGleba's baremetal projects (independent GPIO LED map)
+- [rereprep/noled](https://github.com/rereprep/noled) - the original GPIO mechanism this
+  fork extends - and [issue #3](https://github.com/rereprep/noled/issues/3), the 2018
+  PCH-2000 power LED request this work answers
