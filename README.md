@@ -15,7 +15,7 @@ noled is a simple plugin to turn off PS Vita status LEDs. Especially useful at n
 > - Vita 1000 autodetected and keeps the classic behavior; removal restores everything stock
 >
 > Download `noled.skprx` from [**Releases**](https://github.com/falkenhawk/noled/releases)
-> and see [Install](#install-boot-plugin) below.
+> and see [Install](#install-boot-plugin) below. Version history: [CHANGELOG.md](CHANGELOG.md).
 
 The LED is not a SoC GPIO - it hangs off the syscon MCU ("Ernie") and is driven by its
 autonomous power/charge policy, which is why every GPIO-based approach failed for years. The
