@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../syscon_experiment_policy.h"
+#include "../dev/syscon_experiment_policy.h"
 
 int main(void)
 {

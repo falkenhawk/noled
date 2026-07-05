@@ -1,6 +1,7 @@
 #include <assert.h>
 
 #include "../led_policy.h"
+#include "../dev/led_candidate_patch.h"
 
 int main(void)
 {

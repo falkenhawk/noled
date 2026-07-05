@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../dolce_led_policy.h"
+#include "../dev/dolce_led_policy.h"
 
 int main(void)
 {

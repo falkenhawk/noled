@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../trace_summary.h"
+#include "../dev/trace_summary.h"
 
 int main(void)
 {

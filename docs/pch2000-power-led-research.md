@@ -203,8 +203,8 @@ Nothing persists across a reboot; removing the plugin restores fully stock behav
 
 ## 9. Sources
 
-- live hardware probing on PCH-2000 (this repo: probe harness in `loader/` and
-  `runtime_probe.h`, session-by-session results in the other `docs/` files)
+- live hardware probing on PCH-2000 (this repo: probe harness in `dev/loader/` and
+  `dev/runtime_probe.h`, session-by-session results in the other `docs/` files)
 - Vita Development Wiki: [Ernie](https://wiki.henkaku.xyz/vita/Ernie) (packet format,
   checksum), [SceSyscon](https://wiki.henkaku.xyz/vita/SceSyscon) (command table, NIDs,
   wrapper prototypes), [ScePower](https://wiki.henkaku.xyz/vita/ScePower)

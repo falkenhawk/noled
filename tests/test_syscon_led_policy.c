@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../syscon_led_policy.h"
+#include "../dev/syscon_led_policy.h"
 
 int main(void)
 {

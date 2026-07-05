@@ -42,10 +42,8 @@ ur0:tai/noled.skprx
 Note: taiHEN reads `ur0:tai/config.txt` only when `ux0:tai/config.txt` does not exist - add
 the line to whichever config is active on your system. Reboot afterwards.
 
-No configuration file is needed. On PCH-2000 the plugin optionally honors
-`ux0:data/noled/led_candidate.bin` (written by the diagnostic app): a missing file or mode 14
-means the power LED policy, an explicit mode 0 restores stock power LED behavior while keeping
-the classic LED blocking.
+No configuration file is needed - the plugin reads no config and writes no files at all.
+Removing it from the taiHEN config (plus a reboot) restores everything stock.
 
 ## Build
 
@@ -56,17 +54,19 @@ cmake -S . -B build -DRELEASE=1
 cmake --build build -j8
 ```
 
-Outputs:
+The build produces a single output: `build/noled.skprx` - the kernel plugin, and the
+only file releases ship.
 
-- `build/noled.skprx` - the kernel plugin (this is all end users need)
-- `build/noled_loader.vpk` - development/diagnostic harness, see
-  [`docs/runtime-testing.md`](docs/runtime-testing.md)
+The development/diagnostic harness (used for the power LED research) lives under
+[`dev/`](dev/) with its own build instructions in [`dev/README.md`](dev/README.md).
 
 ## Credits
 
-All credits to @xerpi for the original plugin. The PCH-2000 power LED research and
-implementation were done in this fork - see the
-[research write-up](docs/pch2000-power-led-research.md) for the sources it builds on.
+All credits to [@xerpi](https://github.com/xerpi) for the
+[original plugin](https://github.com/rereprep/noled) and to
+[@rereprep](https://github.com/rereprep) for publishing it and adding the game card LED
+support. The PCH-2000 power LED research and implementation were done in this fork - see
+the [research write-up](docs/pch2000-power-led-research.md) for the sources it builds on.
 
 ## Known issues
 

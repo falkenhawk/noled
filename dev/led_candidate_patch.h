@@ -1,6 +1,8 @@
 #ifndef NOLED_LED_CANDIDATE_PATCH_H
 #define NOLED_LED_CANDIDATE_PATCH_H
 
+#include "led_policy.h"
+
 #define NOLED_LED_CANDIDATE_CONFIG_PATH "ux0:data/noled/led_candidate.bin"
 #define NOLED_LED_CANDIDATE_CONFIG_MAGIC 0x31434C4E
 
@@ -26,10 +28,24 @@
 #define NOLED_LED_CANDIDATE_0387_SUM 0x6C
 #define NOLED_LED_CANDIDATE_0387_DATA_LEN 9
 
+/* mode 9 experiment: additionally block GPIO bus 0 port 3, a power LED
+ * candidate that turned out not to be a GPIO at all */
+#define NOLED_GPIO_POWER_LED_CANDIDATE_PORT 3
+
 typedef struct NoledLedCandidateConfig {
 	unsigned int magic;
 	unsigned int mode;
 } NoledLedCandidateConfig;
+
+static inline int noled_should_block_gpio_set_for_mode(int bus,
+	int port,
+	unsigned int mode)
+{
+	return noled_should_block_gpio_set(bus, port) ||
+	       (mode == NOLED_LED_CANDIDATE_GPIO_PORT3_BLOCK &&
+	        bus == NOLED_GPIO_BUS &&
+	        port == NOLED_GPIO_POWER_LED_CANDIDATE_PORT);
+}
 
 static inline int noled_led_candidate_mode_valid(unsigned int mode)
 {

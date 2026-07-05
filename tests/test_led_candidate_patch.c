@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../led_candidate_patch.h"
+#include "../dev/led_candidate_patch.h"
 
 int main(void)
 {

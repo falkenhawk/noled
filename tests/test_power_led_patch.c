@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "../power_led_patch.h"
+#include "../dev/power_led_patch.h"
 
 int main(void)
 {

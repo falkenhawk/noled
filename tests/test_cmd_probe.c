@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../cmd_probe.h"
+#include "../dev/cmd_probe.h"
 
 int main(void)
 {

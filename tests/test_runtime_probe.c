@@ -1,8 +1,8 @@
 #include <assert.h>
 #include <string.h>
 
-#include "../runtime_probe.h"
-#include "../loader/probe_candidates.h"
+#include "../dev/runtime_probe.h"
+#include "../dev/loader/probe_candidates.h"
 
 static NoledRuntimeProbeRequest make_request(unsigned int op,
 	unsigned int arg0,

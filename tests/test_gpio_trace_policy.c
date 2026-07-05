@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../gpio_trace_policy.h"
+#include "../dev/gpio_trace_policy.h"
 
 int main(void)
 {

@@ -1,6 +1,6 @@
 #include <assert.h>
 
-#include "../syscon_trace.h"
+#include "../dev/syscon_trace.h"
 
 int main(void)
 {
